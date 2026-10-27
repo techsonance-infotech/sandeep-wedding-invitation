@@ -39,8 +39,9 @@ export const ScratchCard: React.FC<Props> = ({ onRevealed, revealed }) => {
       ctx.fillStyle = grad;
       ctx.fillRect(0, 0, rect.width, rect.height);
 
+      const fontSize = Math.max(11, Math.min(15, rect.width / 25));
       ctx.fillStyle = '#4a2f0f';
-      ctx.font = '600 15px "Cinzel", serif';
+      ctx.font = `600 ${fontSize}px "Cinzel", serif`;
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
       ctx.fillText('✦  SCRATCH TO REVEAL  ✦', rect.width / 2, rect.height / 2);
@@ -54,8 +55,8 @@ export const ScratchCard: React.FC<Props> = ({ onRevealed, revealed }) => {
   const fireCelebration = () => {
     const fire = (origin: { x: number; y: number }) =>
       confetti({
-        particleCount: 120,
-        spread: 90,
+        particleCount: 100,
+        spread: 80,
         startVelocity: 45,
         origin,
         colors: ['#d4a574', '#f5d199', '#c75a6b', '#7a8a6a', '#ffffff'],
@@ -84,7 +85,7 @@ export const ScratchCard: React.FC<Props> = ({ onRevealed, revealed }) => {
     }
 
     const total = data.length / step;
-    if (clearPixels / total > 0.45) {
+    if (clearPixels / total > 0.42) {
       setHasRevealed(true);
       ctx.clearRect(0, 0, width, height);
       fireCelebration();
@@ -101,20 +102,20 @@ export const ScratchCard: React.FC<Props> = ({ onRevealed, revealed }) => {
     const rect = canvas.getBoundingClientRect();
     ctx.globalCompositeOperation = 'destination-out';
     ctx.beginPath();
-    ctx.arc(clientX - rect.left, clientY - rect.top, 28, 0, Math.PI * 2);
+    ctx.arc(clientX - rect.left, clientY - rect.top, 26, 0, Math.PI * 2);
     ctx.fill();
   };
 
   return (
     <div
       ref={containerRef}
-      className="relative mx-auto w-full max-w-md h-32 rounded-2xl overflow-hidden border-2 border-gold-soft shadow-elegant select-none"
+      className="relative mx-auto w-full max-w-[300px] xs:max-w-sm sm:max-w-md h-28 sm:h-32 rounded-2xl overflow-hidden border-2 border-gold-soft shadow-elegant select-none"
     >
-      <div className="absolute inset-0 flex flex-col items-center justify-center bg-cream">
-        <p className="font-cinzel tracking-[0.35em] text-sage-deep text-sm sm:text-base font-semibold">
+      <div className="absolute inset-0 flex flex-col items-center justify-center bg-cream px-2">
+        <p className="font-cinzel tracking-[0.25em] sm:tracking-[0.35em] text-sage-deep text-xs sm:text-base font-semibold">
           SAVE THE DATE
         </p>
-        <p className="font-script text-3xl sm:text-4xl text-rose-deep mt-1 font-normal">
+        <p className="font-script text-2xl xs:text-3xl sm:text-4xl text-rose-deep mt-0.5 sm:mt-1 font-normal">
           22nd November 2026
         </p>
       </div>

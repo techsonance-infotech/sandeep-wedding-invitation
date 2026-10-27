@@ -53,19 +53,19 @@ export const App: React.FC = () => {
         <EnvelopeScreen onOpen={handleOpenEnvelope} opening={opening} />
       )}
 
-      {/* 5. Fullscreen Card Lightbox Modal */}
+      {/* 5. Fullscreen Card & Photo Lightbox Modal */}
       {lightboxImage && (
         <div
-          className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4"
+          className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 cursor-pointer animate-fade-in"
           onClick={() => setLightboxImage(null)}
         >
           <div
-            className="relative max-w-md w-full max-h-[92vh] flex flex-col items-center"
+            className="relative max-w-lg sm:max-w-2xl w-full max-h-[94dvh] flex flex-col items-center"
             onClick={(e) => e.stopPropagation()}
           >
             <button
               onClick={() => setLightboxImage(null)}
-              className="absolute -top-10 right-0 p-2 text-white hover:text-gold-soft transition-colors cursor-pointer"
+              className="absolute -top-11 right-0 p-2 text-white hover:text-gold-soft transition-colors cursor-pointer"
               title="Close"
             >
               <X className="w-6 h-6" />
@@ -73,17 +73,17 @@ export const App: React.FC = () => {
 
             <img
               src={lightboxImage}
-              alt="Invitation Card"
-              className="max-h-[82vh] w-auto object-contain rounded-xl border border-gold-soft shadow-2xl bg-cream"
+              alt="Wedding Keepsake"
+              className="max-h-[76dvh] sm:max-h-[82vh] w-auto max-w-full object-contain rounded-2xl border-2 border-gold-soft shadow-2xl bg-cream/20"
             />
 
             <a
               href={lightboxImage}
-              download="Wedding_Invitation_Card.jpeg"
-              className="mt-3 px-6 py-2 rounded-full gradient-gold text-white font-cinzel text-xs tracking-wider shadow-gold hover:opacity-90 transition-all flex items-center gap-2"
+              download={lightboxImage.includes('couple') ? 'Sandeep_Nikitha_Portrait.jpg' : 'Wedding_Invitation_Card.jpeg'}
+              className="mt-3.5 px-6 py-2.5 rounded-full gradient-gold text-white font-cinzel text-xs tracking-wider shadow-gold hover:opacity-90 transition-all flex items-center gap-2 cursor-pointer"
             >
               <Download className="w-3.5 h-3.5" />
-              <span>Download High-Res Card</span>
+              <span>{lightboxImage.includes('couple') ? 'Download High-Res Portrait' : 'Download High-Res Card'}</span>
             </a>
           </div>
         </div>

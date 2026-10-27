@@ -30,15 +30,15 @@ export const Countdown: React.FC = () => {
   ];
 
   return (
-    <div className="flex justify-center gap-3 sm:gap-6">
+    <div className="grid grid-cols-4 gap-2 xs:gap-2.5 sm:gap-4 md:gap-6 max-w-[320px] xs:max-w-xs sm:max-w-md mx-auto">
       {units.map((unit) => (
-        <div key={unit.label} className="flex flex-col items-center min-w-[68px] sm:min-w-[90px]">
-          <div className="w-full aspect-square rounded-2xl bg-cream border border-gold-soft shadow-soft flex items-center justify-center backdrop-blur-sm">
-            <span className="font-cinzel text-2xl sm:text-4xl text-rose-deep tabular-nums">
+        <div key={unit.label} className="flex flex-col items-center">
+          <div className="w-full aspect-square rounded-xl sm:rounded-2xl bg-cream border border-gold-soft shadow-soft flex items-center justify-center backdrop-blur-sm">
+            <span className="font-cinzel text-xl xs:text-2xl sm:text-4xl text-rose-deep tabular-nums font-semibold">
               {String(unit.value).padStart(2, '0')}
             </span>
           </div>
-          <span className="mt-2 text-xs sm:text-sm tracking-widest uppercase text-sage-deep font-medium">
+          <span className="mt-1.5 sm:mt-2 text-[10px] sm:text-xs tracking-wider uppercase text-sage-deep font-medium">
             {unit.label}
           </span>
         </div>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import confetti from 'canvas-confetti';
-import { Send, CheckCircle2, Sparkles, Edit3 } from 'lucide-react';
+import { Send, CheckCircle2, Edit3 } from 'lucide-react';
 import { FloralDivider } from './FloralDivider';
 import { CornerDecor } from './CornerDecor';
 
@@ -100,32 +100,32 @@ export const RSVPSection: React.FC = () => {
   };
 
   return (
-    <section id="rsvp" className="relative py-20 px-6 bg-cream border-t border-gold-soft/30">
+    <section id="rsvp" className="relative py-14 sm:py-20 px-4 sm:px-6 bg-cream border-t border-gold-soft/30">
       <CornerDecor />
       <div className="relative max-w-3xl mx-auto">
-        <div className="text-center mb-10">
+        <div className="text-center mb-8 sm:mb-10">
           <p className="font-cinzel text-xs text-sage-deep tracking-widest font-semibold uppercase">
             RUDRA &amp; YANAGANDHULA FAMILIES
           </p>
-          <h2 className="font-script text-5xl sm:text-6xl text-rose-deep mt-2">
+          <h2 className="font-script text-4xl sm:text-6xl text-rose-deep mt-2">
             RSVP &amp; Blessings
           </h2>
           <FloralDivider />
-          <p className="font-serif-display italic text-base sm:text-lg text-foreground/80 max-w-xl mx-auto">
+          <p className="font-serif-display italic text-sm sm:text-lg text-foreground/80 max-w-xl mx-auto px-2">
             Please let us know if you will be able to join us for our wedding celebrations.
           </p>
         </div>
 
-        <div className="bg-cream/90 backdrop-blur-md rounded-2xl border border-gold-soft p-6 sm:p-10 shadow-elegant">
+        <div className="bg-cream/90 backdrop-blur-md rounded-2xl border border-gold-soft p-4 xs:p-6 sm:p-10 shadow-elegant">
           {submitted && savedData ? (
-            <div className="text-center py-6">
-              <div className="w-14 h-14 rounded-full bg-rose-deep/10 border border-rose-deep/30 text-rose-deep flex items-center justify-center mx-auto mb-4">
-                <CheckCircle2 className="w-7 h-7" />
+            <div className="text-center py-4 sm:py-6">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-rose-deep/10 border border-rose-deep/30 text-rose-deep flex items-center justify-center mx-auto mb-4">
+                <CheckCircle2 className="w-6 h-6 sm:w-7 sm:h-7" />
               </div>
-              <h3 className="font-serif-display text-2xl sm:text-3xl font-semibold text-rose-deep mb-2">
+              <h3 className="font-serif-display text-xl sm:text-3xl font-semibold text-rose-deep mb-2">
                 Thank You, {savedData.name}!
               </h3>
-              <p className="text-sm font-serif-display italic text-foreground/80 max-w-md mx-auto mb-6">
+              <p className="text-xs sm:text-sm font-serif-display italic text-foreground/80 max-w-md mx-auto mb-6">
                 Your presence has been lovingly recorded. The Rudra and Yanagandhula families eagerly await welcoming you!
               </p>
 
@@ -152,17 +152,17 @@ export const RSVPSection: React.FC = () => {
 
               <button
                 onClick={() => setSubmitted(false)}
-                className="inline-flex items-center gap-1.5 text-xs font-cinzel uppercase tracking-wider text-rose-deep hover:text-foreground transition-colors"
+                className="inline-flex items-center gap-1.5 text-xs font-cinzel uppercase tracking-wider text-rose-deep hover:text-foreground transition-colors cursor-pointer"
               >
                 <Edit3 className="w-3.5 h-3.5" />
                 <span>Edit RSVP</span>
               </button>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <form onSubmit={handleSubmit} className="space-y-5 sm:space-y-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5">
                 <div>
-                  <label className="block text-xs font-cinzel tracking-wider text-sage-deep mb-2 font-semibold">
+                  <label className="block text-[11px] sm:text-xs font-cinzel tracking-wider text-sage-deep mb-1.5 font-semibold">
                     YOUR NAME *
                   </label>
                   <input
@@ -171,12 +171,12 @@ export const RSVPSection: React.FC = () => {
                     placeholder="e.g. Ramesh Garu"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full px-4 py-2.5 rounded-xl bg-white/70 border border-gold-soft text-foreground text-sm focus:outline-none focus:border-gold transition-colors"
+                    className="w-full px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-xl bg-white/70 border border-gold-soft text-foreground text-sm focus:outline-none focus:border-gold transition-colors"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-cinzel tracking-wider text-sage-deep mb-2 font-semibold">
+                  <label className="block text-[11px] sm:text-xs font-cinzel tracking-wider text-sage-deep mb-1.5 font-semibold">
                     MOBILE NUMBER *
                   </label>
                   <input
@@ -185,17 +185,17 @@ export const RSVPSection: React.FC = () => {
                     placeholder="+91 98765 43210"
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    className="w-full px-4 py-2.5 rounded-xl bg-white/70 border border-gold-soft text-foreground text-sm focus:outline-none focus:border-gold transition-colors"
+                    className="w-full px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-xl bg-white/70 border border-gold-soft text-foreground text-sm focus:outline-none focus:border-gold transition-colors"
                   />
                 </div>
               </div>
 
               {/* Number of Guests */}
               <div>
-                <label className="block text-xs font-cinzel tracking-wider text-sage-deep mb-2 font-semibold">
+                <label className="block text-[11px] sm:text-xs font-cinzel tracking-wider text-sage-deep mb-1.5 font-semibold">
                   NUMBER OF GUESTS: <span className="text-rose-deep font-bold">{formData.guestsCount}</span>
                 </label>
-                <div className="flex gap-2">
+                <div className="flex gap-1.5 sm:gap-2">
                   {[1, 2, 3, 4, 5, '6+'].map((num) => {
                     const val = typeof num === 'string' ? 6 : num;
                     const isSelected = formData.guestsCount === val;
@@ -204,7 +204,7 @@ export const RSVPSection: React.FC = () => {
                         key={num}
                         type="button"
                         onClick={() => setFormData({ ...formData, guestsCount: val })}
-                        className={`flex-1 py-2 rounded-lg text-xs font-cinzel font-semibold transition-all ${
+                        className={`flex-1 py-2 rounded-lg text-xs font-cinzel font-semibold transition-all cursor-pointer ${
                           isSelected
                             ? 'gradient-gold text-white shadow-gold'
                             : 'bg-white/80 border border-gold-soft text-sage-deep hover:bg-white'
@@ -220,25 +220,25 @@ export const RSVPSection: React.FC = () => {
               {/* Events Attendance Checkboxes */}
               <div>
                 <div className="flex items-center justify-between mb-2">
-                  <label className="text-xs font-cinzel tracking-wider text-sage-deep font-semibold">
+                  <label className="text-[11px] sm:text-xs font-cinzel tracking-wider text-sage-deep font-semibold">
                     WHICH FUNCTIONS WILL YOU ATTEND?
                   </label>
                   <button
                     type="button"
                     onClick={handleSelectAll}
-                    className="text-[11px] font-cinzel text-rose-deep hover:underline"
+                    className="text-[10px] sm:text-[11px] font-cinzel text-rose-deep hover:underline cursor-pointer"
                   >
                     {formData.attendingEvents.length === EVENTS_LIST.length ? 'Deselect All' : 'Select All'}
                   </button>
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-2.5">
                   {EVENTS_LIST.map((ev) => {
                     const checked = formData.attendingEvents.includes(ev.id);
                     return (
                       <div
                         key={ev.id}
                         onClick={() => handleEventToggle(ev.id)}
-                        className={`p-3 rounded-xl border cursor-pointer transition-all flex items-center justify-between ${
+                        className={`p-2.5 sm:p-3 rounded-xl border cursor-pointer transition-all flex items-center justify-between ${
                           checked
                             ? 'bg-sage-soft/40 border-gold shadow-sm'
                             : 'bg-white/60 border-gold-soft/50 text-foreground/70'
@@ -254,7 +254,7 @@ export const RSVPSection: React.FC = () => {
                           type="checkbox"
                           checked={checked}
                           onChange={() => {}}
-                          className="w-4 h-4 accent-[#c59145] rounded"
+                          className="w-4 h-4 accent-[#c59145] rounded cursor-pointer"
                         />
                       </div>
                     );
@@ -264,7 +264,7 @@ export const RSVPSection: React.FC = () => {
 
               {/* Personal Blessing Note */}
               <div>
-                <label className="block text-xs font-cinzel tracking-wider text-sage-deep mb-2 font-semibold">
+                <label className="block text-[11px] sm:text-xs font-cinzel tracking-wider text-sage-deep mb-1.5 font-semibold">
                   A BLESSING FOR SANDEEP &amp; NIKITHA
                 </label>
                 <textarea
@@ -272,13 +272,13 @@ export const RSVPSection: React.FC = () => {
                   placeholder="Share your prayers and heartfelt wishes..."
                   value={formData.blessingMessage}
                   onChange={(e) => setFormData({ ...formData, blessingMessage: e.target.value })}
-                  className="w-full px-4 py-2.5 rounded-xl bg-white/70 border border-gold-soft text-foreground text-sm focus:outline-none focus:border-gold transition-colors"
+                  className="w-full px-3.5 py-2.5 sm:px-4 sm:py-3 rounded-xl bg-white/70 border border-gold-soft text-foreground text-sm focus:outline-none focus:border-gold transition-colors"
                 />
               </div>
 
               <button
                 type="submit"
-                className="w-full py-3.5 rounded-full gradient-gold text-white font-cinzel text-xs tracking-wider shadow-gold hover:opacity-90 active:scale-[0.99] transition-all flex items-center justify-center gap-2"
+                className="w-full py-3 sm:py-3.5 rounded-full gradient-gold text-white font-cinzel text-xs tracking-wider shadow-gold hover:opacity-90 active:scale-[0.99] transition-all flex items-center justify-center gap-2 cursor-pointer"
               >
                 <Send className="w-4 h-4" />
                 <span>CONFIRM ATTENDANCE</span>
