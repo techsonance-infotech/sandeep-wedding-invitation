@@ -162,14 +162,20 @@ export const CardsGallery: React.FC<Props> = ({ onOpenCard }) => {
               {/* Image with Click to Zoom */}
               <div
                 onClick={() => onOpenCard?.(item.image)}
-                className={`relative overflow-hidden cursor-pointer bg-cream/50 ${
-                  item.category === 'couple' ? 'aspect-[3/4]' : 'aspect-[9/16]'
-                }`}
+                className="relative overflow-hidden cursor-pointer bg-cream/50 aspect-[9/15]"
               >
                 <img
                   src={item.image}
                   alt={item.alt}
                   loading="lazy"
+                  style={{
+                    objectPosition:
+                      item.id === 'couple-1'
+                        ? '50% 36%'
+                        : item.id === 'couple-2'
+                        ? '50% 15%'
+                        : '50% 10%',
+                  }}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
 

@@ -39,8 +39,8 @@ export const CoupleSpotlight: React.FC<Props> = ({ onOpenPhoto }) => {
 
         {/* Dual Luxury Photo Showcase */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-stretch max-w-5xl mx-auto">
-          {/* Photo 1: Royal Palace Promenade */}
-          <div className="group relative rounded-3xl p-3 sm:p-4 bg-gradient-to-b from-white/90 via-cream/90 to-sage-soft/30 border-2 border-gold-soft/80 shadow-elegant hover:shadow-gold transition-all duration-700 flex flex-col justify-between">
+          {/* Photo 1: Royal Palace Promenade (Faces guaranteed uncropped with focal point 50% 36%) */}
+          <div className="group relative rounded-3xl p-3 sm:p-5 bg-gradient-to-b from-white/95 via-cream/90 to-sage-soft/30 border-2 border-gold-soft/80 shadow-elegant hover:shadow-gold transition-all duration-700 flex flex-col justify-between">
             {/* Top Monogram Tag */}
             <div className="flex items-center justify-between pb-3 px-2 border-b border-gold-soft/40">
               <span className="font-cinzel text-[11px] font-semibold text-rose-deep tracking-wider flex items-center gap-1.5">
@@ -52,20 +52,21 @@ export const CoupleSpotlight: React.FC<Props> = ({ onOpenPhoto }) => {
               </span>
             </div>
 
-            {/* Image Container with Inner Arch Frame & Zoom Trigger */}
+            {/* Image Container with Royal Arch Proportions & Specific Focal Point */}
             <div
               onClick={() => onOpenPhoto?.('/assets/couple/couple_royal_palace.jpg')}
-              className="relative my-3 rounded-2xl overflow-hidden aspect-[3/4] sm:aspect-[4/5] bg-cream border border-gold-soft/50 shadow-inner cursor-pointer"
+              className="relative my-3 rounded-t-[2.5rem] rounded-b-2xl overflow-hidden aspect-[9/14] sm:aspect-[9/13.5] bg-cream border border-gold-soft/50 shadow-inner cursor-pointer"
             >
               <img
                 src="/assets/couple/couple_royal_palace.jpg"
                 alt="Sandeep and Nikitha Royal Palace Gown Portrait"
                 loading="lazy"
-                className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+                style={{ objectPosition: '50% 36%' }}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
               />
 
-              {/* Gradient Vignette Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-black/10 opacity-60 group-hover:opacity-40 transition-opacity" />
+              {/* Gentle bottom-only shadow so faces stay bright & completely clear */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity pointer-events-none" />
 
               {/* Hover Zoom Pill */}
               <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -76,8 +77,8 @@ export const CoupleSpotlight: React.FC<Props> = ({ onOpenPhoto }) => {
               </div>
 
               {/* Bottom Subtle Photo Tag */}
-              <div className="absolute bottom-3 left-3 right-3 text-center">
-                <span className="inline-block px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-cream text-[11px] font-cinzel tracking-wider border border-white/20">
+              <div className="absolute bottom-3 left-3 right-3 text-center pointer-events-none">
+                <span className="inline-block px-3 py-1 rounded-full bg-black/65 backdrop-blur-md text-cream text-[11px] font-cinzel tracking-wider border border-white/20">
                   A Royal Fairytale
                 </span>
               </div>
@@ -100,14 +101,14 @@ export const CoupleSpotlight: React.FC<Props> = ({ onOpenPhoto }) => {
                   className="inline-flex items-center gap-1.5 text-rose-deep hover:text-gold-soft font-cinzel text-[11px] tracking-wider transition-colors cursor-pointer"
                 >
                   <Eye className="w-3.5 h-3.5" />
-                  <span>Click to expand high-resolution</span>
+                  <span>Click to view uncropped high-resolution</span>
                 </button>
               </div>
             </div>
           </div>
 
-          {/* Photo 2: Traditional Sacred Portrait */}
-          <div className="group relative rounded-3xl p-3 sm:p-4 bg-gradient-to-b from-white/90 via-cream/90 to-sage-soft/30 border-2 border-gold-soft/80 shadow-elegant hover:shadow-gold transition-all duration-700 flex flex-col justify-between">
+          {/* Photo 2: Traditional Sacred Portrait (Focal point 50% 15% preserves groom's head & smile) */}
+          <div className="group relative rounded-3xl p-3 sm:p-5 bg-gradient-to-b from-white/95 via-cream/90 to-sage-soft/30 border-2 border-gold-soft/80 shadow-elegant hover:shadow-gold transition-all duration-700 flex flex-col justify-between">
             {/* Top Monogram Tag */}
             <div className="flex items-center justify-between pb-3 px-2 border-b border-gold-soft/40">
               <span className="font-cinzel text-[11px] font-semibold text-rose-deep tracking-wider flex items-center gap-1.5">
@@ -119,20 +120,21 @@ export const CoupleSpotlight: React.FC<Props> = ({ onOpenPhoto }) => {
               </span>
             </div>
 
-            {/* Image Container with Inner Arch Frame & Zoom Trigger */}
+            {/* Image Container with Royal Arch Proportions & Specific Focal Point */}
             <div
               onClick={() => onOpenPhoto?.('/assets/couple/couple_portrait.jpg')}
-              className="relative my-3 rounded-2xl overflow-hidden aspect-[3/4] sm:aspect-[4/5] bg-cream border border-gold-soft/50 shadow-inner cursor-pointer"
+              className="relative my-3 rounded-t-[2.5rem] rounded-b-2xl overflow-hidden aspect-[9/14] sm:aspect-[9/13.5] bg-cream border border-gold-soft/50 shadow-inner cursor-pointer"
             >
               <img
                 src="/assets/couple/couple_portrait.jpg"
                 alt="Sandeep and Nikitha Traditional Intimate Portrait"
                 loading="lazy"
-                className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"
+                style={{ objectPosition: '50% 15%' }}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
               />
 
-              {/* Gradient Vignette Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-black/10 opacity-60 group-hover:opacity-40 transition-opacity" />
+              {/* Gentle bottom-only shadow so faces stay bright & completely clear */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity pointer-events-none" />
 
               {/* Hover Zoom Pill */}
               <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -143,8 +145,8 @@ export const CoupleSpotlight: React.FC<Props> = ({ onOpenPhoto }) => {
               </div>
 
               {/* Bottom Subtle Photo Tag */}
-              <div className="absolute bottom-3 left-3 right-3 text-center">
-                <span className="inline-block px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-cream text-[11px] font-cinzel tracking-wider border border-white/20">
+              <div className="absolute bottom-3 left-3 right-3 text-center pointer-events-none">
+                <span className="inline-block px-3 py-1 rounded-full bg-black/65 backdrop-blur-md text-cream text-[11px] font-cinzel tracking-wider border border-white/20">
                   Two Souls, One Sacred Bond
                 </span>
               </div>
@@ -167,7 +169,7 @@ export const CoupleSpotlight: React.FC<Props> = ({ onOpenPhoto }) => {
                   className="inline-flex items-center gap-1.5 text-rose-deep hover:text-gold-soft font-cinzel text-[11px] tracking-wider transition-colors cursor-pointer"
                 >
                   <Eye className="w-3.5 h-3.5" />
-                  <span>Click to expand high-resolution</span>
+                  <span>Click to view uncropped high-resolution</span>
                 </button>
               </div>
             </div>
