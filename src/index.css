@@ -1,99 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Great+Vibes&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --background: 38 40% 96%;
+  --foreground: 25 30% 18%;
+  --card: 38 40% 96%;
+  --card-foreground: 25 30% 18%;
+  --popover: 38 40% 96%;
+  --popover-foreground: 25 30% 18%;
+  --primary: 348 60% 42%;
+  --primary-foreground: 38 40% 96%;
+  --secondary: 95 18% 70%;
+  --secondary-foreground: 25 30% 18%;
+  --muted: 38 30% 90%;
+  --muted-foreground: 25 15% 40%;
+  --accent: 36 45% 60%;
+  --accent-foreground: 25 30% 18%;
+  --destructive: 0 70% 45%;
+  --destructive-foreground: 38 40% 96%;
+  --border: 36 30% 80%;
+  --input: 36 30% 80%;
+  --ring: 348 60% 42%;
+  --radius: 0.75rem;
+
+  --sage: 95 22% 65%;
+  --sage-deep: 95 25% 45%;
+  --sage-soft: 95 30% 88%;
+  --cream: 38 50% 95%;
+  --gold: 36 55% 55%;
+  --gold-soft: 36 60% 75%;
+  --rose: 348 60% 50%;
+  --rose-deep: 348 65% 35%;
+  --ink: 25 30% 18%;
+
+  --gradient-sage: linear-gradient(135deg, hsl(95 30% 78%), hsl(95 22% 62%));
+  --gradient-cream: linear-gradient(180deg, hsl(38 50% 96%), hsl(38 40% 92%));
+  --gradient-gold: linear-gradient(135deg, hsl(36 55% 60%), hsl(36 45% 45%));
+  --gradient-rose: linear-gradient(135deg, hsl(348 55% 55%), hsl(348 65% 38%));
+  --shadow-elegant: 0 20px 60px -20px hsl(95 25% 25% / 0.25);
+  --shadow-soft: 0 8px 30px -10px hsl(25 30% 18% / 0.15);
+  --shadow-gold: 0 10px 40px -10px hsl(36 55% 45% / 0.4);
+  --transition-elegant: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;
-    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
   }
 
   body {
-    background-color: #26050C;
-    color: #FDFBF7;
-    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
     overflow-x: hidden;
   }
-
-  /* Custom scrollbar */
-  ::-webkit-scrollbar {
-    width: 8px;
-  }
-  ::-webkit-scrollbar-track {
-    background: #1F040A;
-  }
-  ::-webkit-scrollbar-thumb {
-    background: #D4AF37;
-    border-radius: 4px;
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    background: #F3E5AB;
-  }
 }
 
-@layer utilities {
-  .text-gold-gradient {
-    background: linear-gradient(135deg, #FFF4D0 0%, #E6C875 30%, #D4AF37 70%, #9E7D22 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
-  .text-gold-bright {
-    background: linear-gradient(135deg, #FFFFFF 0%, #FFF3CD 50%, #E7C975 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-
-  .bg-gold-metallic {
-    background: linear-gradient(135deg, #E6C875 0%, #D4AF37 40%, #AA8222 100%);
-  }
-
-  .border-gold-ornate {
-    border-color: #D4AF37;
-    box-shadow: 0 0 15px rgba(212, 175, 55, 0.2), inset 0 0 15px rgba(212, 175, 55, 0.1);
-  }
-
-  .bg-royal-card {
-    background: radial-gradient(circle at 50% 0%, rgba(122, 22, 43, 0.85) 0%, rgba(61, 10, 20, 0.95) 100%);
-    backdrop-filter: blur(12px);
-  }
-
-  .bg-royal-card-dark {
-    background: radial-gradient(circle at 50% 0%, rgba(45, 7, 14, 0.9) 0%, rgba(25, 4, 8, 0.98) 100%);
-    backdrop-filter: blur(16px);
-  }
-
-  .kolam-pattern {
-    background-image: radial-gradient(rgba(212, 175, 55, 0.12) 1.5px, transparent 1.5px);
-    background-size: 24px 24px;
-  }
-
-  .shimmer-badge {
-    background: linear-gradient(90deg, rgba(212, 175, 55, 0.1) 0%, rgba(243, 229, 171, 0.3) 50%, rgba(212, 175, 55, 0.1) 100%);
-    background-size: 200% 100%;
-    animation: shimmer 4s infinite linear;
-  }
+.gradient-gold {
+  background: var(--gradient-gold);
 }
 
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
+.gradient-rose {
+  background: var(--gradient-rose);
 }
 
-@keyframes gentleFloat {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-8px) rotate(1.5deg); }
+.gradient-cream {
+  background: var(--gradient-cream);
 }
 
-.animate-gentle-float {
-  animation: gentleFloat 5s ease-in-out infinite;
+.gradient-sage {
+  background: var(--gradient-sage);
 }
 
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
+.shadow-gold {
+  box-shadow: var(--shadow-gold);
+}
+
+.shadow-elegant {
+  box-shadow: var(--shadow-elegant);
+}
+
+.shadow-soft {
+  box-shadow: var(--shadow-soft);
+}
+
+.font-cinzel {
+  font-family: 'Cinzel', serif;
+  letter-spacing: 0.15em;
+}
+
+.font-script {
+  font-family: 'Great Vibes', cursive;
+}
+
+.font-script-capital-a {
+  font-family: 'Alex Brush', cursive;
+}
+
+.font-serif-display {
+  font-family: 'Cormorant Garamond', serif;
+}
+
+/* Butterfly Animation */
+@keyframes butterfly-fly {
+  0%   { transform: translate(-10vw, 60vh) rotate(-8deg) scale(1); }
+  20%  { transform: translate(20vw, 35vh) rotate(6deg)  scale(1.05); }
+  40%  { transform: translate(45vw, 55vh) rotate(-4deg) scale(0.95); }
+  60%  { transform: translate(65vw, 25vh) rotate(8deg)  scale(1.1); }
+  80%  { transform: translate(85vw, 45vh) rotate(-6deg) scale(1); }
+  100% { transform: translate(110vw, 30vh) rotate(4deg) scale(1); }
+}
+
+@keyframes butterfly-flap {
+  0%, 100% { transform: scaleX(1); }
+  50%      { transform: scaleX(0.55); }
+}
+
+.butterfly-path {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 40;
+  pointer-events: none;
+  animation: butterfly-fly 18s linear infinite;
+  will-change: transform;
+}
+
+.butterfly-wings {
+  display: inline-block;
+  animation: butterfly-flap 0.25s ease-in-out infinite;
+  transform-origin: center;
 }

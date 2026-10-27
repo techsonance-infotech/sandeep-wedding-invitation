@@ -1,83 +1,93 @@
 import React, { useState, useEffect } from 'react';
-import { Navbar } from './components/Navbar';
-import { HeroSection } from './components/HeroSection';
-import { IntroShloka } from './components/IntroShloka';
-import { CountdownTimer } from './components/CountdownTimer';
-import { InteractiveEnvelope } from './components/InteractiveEnvelope';
-import { EventsTimeline } from './components/EventsTimeline';
-import { CoupleStory } from './components/CoupleStory';
-import { VenuesSection } from './components/VenuesSection';
-import { CardGalleryModal } from './components/CardGalleryModal';
-import { RSVPSection } from './components/RSVPSection';
-import { BlessingsWall } from './components/BlessingsWall';
-import { Footer } from './components/Footer';
-import { ParticleBackground } from './components/ParticleBackground';
-import { AudioPlayer } from './components/AudioPlayer';
+import { EnvelopeScreen } from './components/EnvelopeScreen';
+import { MainPage } from './components/MainPage';
+import { FloatingPetals } from './components/FloatingPetals';
+import { AnimatedButterfly } from './components/AnimatedButterfly';
+import { BackgroundMusic } from './components/BackgroundMusic';
+import { X, Download } from 'lucide-react';
 
 export const App: React.FC = () => {
-  const [selectedCardId, setSelectedCardId] = useState<string | null>(null);
+  const [isOpen, setIsOpen] = useState(false);
+  const [opening, setOpening] = useState(false);
+  const [lightboxImage, setLightboxImage] = useState<string | null>(null);
 
-  const handleOpenCardModal = (cardId: string) => {
-    setSelectedCardId(cardId);
-    // Smooth scroll to gallery section if requested
-    const el = document.getElementById('gallery');
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+  useEffect(() => {
+    document.title = 'Sandeep & Nikitha — Wedding Invitation · 22 November 2026';
+    const metaDesc =
+      document.querySelector('meta[name="description"]') ||
+      (() => {
+        const meta = document.createElement('meta');
+        meta.setAttribute('name', 'description');
+        document.head.appendChild(meta);
+        return meta;
+      })();
+    metaDesc.setAttribute(
+      'content',
+      'Join Sandeep Rudra & Nikitha Yanagandhula for their wedding celebrations from 19th to 29th November 2026. Marriage on Sunday, 22 November 2026 at Siri Function Hall, Thungathurthi.'
+    );
+  }, []);
 
-  const handleCloseModal = () => {
-    setSelectedCardId(null);
+  const handleOpenEnvelope = () => {
+    setOpening(true);
+    setTimeout(() => {
+      setIsOpen(true);
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    }, 900);
   };
 
   return (
-    <div className="min-h-screen bg-[#24040A] text-[#FDFBF7] relative selection:bg-gold-500 selection:text-[#3D0A14]">
-      {/* Ambient Canvas Petals & Gold Sparkles */}
-      <ParticleBackground />
+    <div className="relative min-h-screen bg-cream selection:bg-gold-soft selection:text-foreground">
+      {/* 1. Continuous Floating Petals & Flowers */}
+      <FloatingPetals />
 
-      {/* Floating Audio Player */}
-      <AudioPlayer />
+      {/* 2. Fluttering Blue Butterfly (active once opened) */}
+      {isOpen && <AnimatedButterfly />}
 
-      {/* Top Navigation */}
-      <Navbar />
+      {/* 3. Traditional Background Music Player */}
+      <BackgroundMusic play={opening || isOpen} />
 
-      <main>
-        {/* 1. Cinematic Hero Section */}
-        <HeroSection />
+      {/* 4. Envelope Screen or Main Page */}
+      {isOpen ? (
+        <MainPage onOpenCard={(src) => setLightboxImage(src)} />
+      ) : (
+        <EnvelopeScreen onOpen={handleOpenEnvelope} opening={opening} />
+      )}
 
-        {/* 2. Sacred Ganesha & Shiva-Parvati Blessing Shloka */}
-        <IntroShloka />
+      {/* 5. Fullscreen Card Lightbox Modal */}
+      {lightboxImage && (
+        <div
+          className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4"
+          onClick={() => setLightboxImage(null)}
+        >
+          <div
+            className="relative max-w-md w-full max-h-[92vh] flex flex-col items-center"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setLightboxImage(null)}
+              className="absolute -top-10 right-0 p-2 text-white hover:text-gold-soft transition-colors cursor-pointer"
+              title="Close"
+            >
+              <X className="w-6 h-6" />
+            </button>
 
-        {/* 3. Auspicious Muhurtham Countdown */}
-        <CountdownTimer />
+            <img
+              src={lightboxImage}
+              alt="Invitation Card"
+              className="max-h-[82vh] w-auto object-contain rounded-xl border border-gold-soft shadow-2xl bg-cream"
+            />
 
-        {/* 4. Interactive Scratch-to-Reveal Invitation */}
-        <InteractiveEnvelope onOpenCardModal={handleOpenCardModal} />
-
-        {/* 5. 4 Wedding Events Timeline & Itinerary */}
-        <EventsTimeline onOpenCardModal={handleOpenCardModal} />
-
-        {/* 6. Bride & Groom Lineage & Families (Rudra & Yanagandhula) */}
-        <CoupleStory />
-
-        {/* 7. Celebration Venues & Navigation (Suryapet, Thungathurthi, Surat) */}
-        <VenuesSection />
-
-        {/* 8. Official Illustrated Invitation Cards Gallery & Lightbox */}
-        <CardGalleryModal
-          selectedCardId={selectedCardId}
-          onCloseModal={handleCloseModal}
-        />
-
-        {/* 9. Interactive RSVP Confirmation */}
-        <RSVPSection />
-
-        {/* 10. Guestbook & Community Blessings Wall */}
-        <BlessingsWall />
-      </main>
-
-      {/* 11. Sacred Footer & Social Sharing */}
-      <Footer />
+            <a
+              href={lightboxImage}
+              download="Wedding_Invitation_Card.jpeg"
+              className="mt-3 px-6 py-2 rounded-full gradient-gold text-white font-cinzel text-xs tracking-wider shadow-gold hover:opacity-90 transition-all flex items-center gap-2"
+            >
+              <Download className="w-3.5 h-3.5" />
+              <span>Download High-Res Card</span>
+            </a>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
